@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OZ Optimizer">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="application-name" content="OZ Optimizer">
+<meta name="theme-color" content="#0f6e56">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f6e56'/><text y='.9em' font-size='70' x='10' fill='white'>OZ</text></svg>">
+<title>Ounces Optimizer - UMA Obuasi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;height:-webkit-fill-available}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;background:#1a1a2e;color:#111;min-height:100vh;min-height:-webkit-fill-available;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.nav{background:#0f6e56;padding:12px 16px;padding-top:max(12px,env(safe-area-inset-top));padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right));display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:10px;position:-webkit-sticky;position:sticky;top:0;z-index:100;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.nav-logo{width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0}
+.nav h1{font-size:15px;font-weight:bold;color:#fff;flex:1}
+.nav p{font-size:10px;color:rgba(255,255,255,0.7)}
+.nav-badge{background:rgba(255,255,255,0.15);border-radius:20px;padding:3px 10px;font-size:10px;color:#fff;white-space:nowrap}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#16213e;border-bottom:2px solid #0f6e56}
+.tab{padding:12px;text-align:center;font-size:12px;font-weight:bold;color:rgba(255,255,255,0.5);cursor:pointer;border:none;background:transparent;transition:all 0.2s;-webkit-appearance:none;touch-action:manipulation;min-height:44px}
+.tab.active{color:#fff;background:#0f3460;border-bottom:3px solid #0f6e56}
+.page{display:none;padding:12px;padding-bottom:max(12px,env(safe-area-inset-bottom));padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right));max-width:900px;margin:0 auto}
+@media(min-width:768px){
+  .page{padding:20px;padding-bottom:max(20px,env(safe-area-inset-bottom))}
+  .pgrid{grid-template-columns:1fr 1fr 1fr}
+  .pfull{grid-column:auto}
+  .af-row{grid-template-columns:3fr 1fr 1fr}
+  .dev-row{grid-template-columns:3fr 1fr 1fr 1fr}
+  .best3{flex-direction:row}
+  .pcard input{font-size:24px}
+  .stable th,.stable td{padding:9px 12px;font-size:12px}
+  .cin{width:56px;font-size:12px}
+  .run-btn{font-size:16px;min-height:56px}
+  .exp-btn{font-size:14px;min-height:56px}
+  .nav h1{font-size:18px}
+  .about-card p,.about-card li{font-size:14px}
+}
+.page.active{display:block}
+.card{background:#fff;border-radius:13px;overflow:hidden;margin-bottom:12px}
+.card-hdr{padding:10px 14px;font-size:12px;font-weight:bold;color:#fff;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.card-hdr.green{background:#0f6e56}
+.card-hdr.navy{background:#1e3a8a}
+.card-hdr.gold{background:#b45309}
+.card-hdr.purple{background:#4c1d95}
+.card-hdr.orange{background:#c2410c}
+.card-body{padding:12px 14px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.pcard{border-radius:11px;padding:11px 13px}
+.pc-gold{background:linear-gradient(135deg,#b45309,#d97706)}
+.pc-teal{background:linear-gradient(135deg,#0f6e56,#1d9e75)}
+.pc-navy{background:linear-gradient(135deg,#1e3a8a,#2563eb)}
+.pc-purple{background:linear-gradient(135deg,#4c1d95,#7c3aed)}
+.pcard label{font-size:9px;font-weight:bold;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px}
+.pcard input{width:100%;font-size:20px;font-weight:bold;color:#fff;background:transparent;border:none;border-bottom:2px solid rgba(255,255,255,0.35);outline:none;padding-bottom:2px;-webkit-appearance:none;appearance:none;border-radius:0}
+.pcard input:focus{border-bottom-color:rgba(255,255,255,0.9)}
+.pcard .hint{font-size:10px;color:rgba(255,255,255,0.65);margin-top:4px}
+.pfull{grid-column:1/-1}
+.tolrow{background:linear-gradient(135deg,#4c1d95,#7c3aed);border-radius:11px;padding:11px 13px;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.tolrow label{font-size:9px;font-weight:bold;color:rgba(255,255,255,0.75);text-transform:uppercase;white-space:nowrap}
+.tolrow input[type=range]{flex:1;accent-color:#c4b5fd;-webkit-appearance:none;appearance:none;height:4px;background:rgba(255,255,255,0.3);border-radius:2px;outline:none;cursor:pointer}
+.tolrow input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:#c4b5fd;cursor:pointer;border:2px solid #fff}
+.tolrow input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#c4b5fd;cursor:pointer;border:2px solid #fff}
+.tolrow .tv{font-size:18px;font-weight:bold;color:#fff;min-width:40px;text-align:right}
+.stable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;overflow-y:visible}
+.stable{width:100%;border-collapse:collapse;font-size:11px;min-width:500px}
+.stable th{padding:7px 9px;background:#1e3a8a;color:#fff;font-size:9px;font-weight:bold;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15)}
+.stable td{padding:6px 8px;border:1px solid #e5e7eb;vertical-align:middle}
+.stable tr:nth-child(even) td{background:#f8fafc}
+.stable tr.active-row td{background:#f0fdf4}
+.stable tr.inactive-row td{opacity:0.55}
+.stable tr.nostock-row td{opacity:0.38}
+.dev-table th{background:#c2410c}
+.dev-table tr.dev-active td{background:#fff7ed}
+.ghi{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:bold;background:#d1fae5;color:#065f46}
+.gmid{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:bold;background:#dbeafe;color:#1e3a8a}
+.glo{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:bold;background:#fef3c7;color:#92400e}
+.gno{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:bold;background:#f1f5f9;color:#94a3b8}
+.cin{width:50px;font-size:11px;padding:3px 4px;border:1.5px solid #e2e8f0;border-radius:6px;text-align:center;background:#f8fafc;color:#111}
+.cin:disabled{opacity:0.3}
+.cin:focus{outline:none;border-color:#2563eb}
+.cin.editable{border-color:#f59e0b;background:#fffbeb}
+.cin.editable:focus{border-color:#d97706}
+.tbtn{border:none;border-radius:20px;padding:4px 10px;font-size:10px;font-weight:bold;cursor:pointer;min-height:44px;color:#fff;-webkit-appearance:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.ton{background:#16a34a}
+.toff{background:#dc2626}
+.tnone{background:#94a3b8;cursor:default}
+.delbtn{background:#fee2e2;border:none;border-radius:6px;color:#dc2626;width:36px;height:36px;cursor:pointer;font-size:13px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center;-webkit-appearance:none;touch-action:manipulation}
+.editbtn{background:#dbeafe;border:none;border-radius:6px;color:#1e3a8a;width:36px;height:36px;cursor:pointer;font-size:12px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center;-webkit-appearance:none;touch-action:manipulation}
+.savebtn-inline{background:#d1fae5;border:none;border-radius:6px;color:#065f46;width:36px;height:36px;cursor:pointer;font-size:13px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center;-webkit-appearance:none;touch-action:manipulation}
+.action-btns{display:flex;gap:3px;align-items:center}
+.addform{display:none;background:#eff6ff;border-radius:10px;padding:12px;margin-bottom:10px;border:1.5px solid #bfdbfe}
+.addform.open{display:block}
+.devform{display:none;background:#fff7ed;border-radius:10px;padding:12px;margin-bottom:10px;border:1.5px solid #fed7aa}
+.devform.open{display:block}
+.af-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;margin-bottom:8px}
+.dev-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:6px;margin-bottom:8px}
+.af-field label{font-size:9px;font-weight:bold;color:#1e40af;text-transform:uppercase;display:block;margin-bottom:3px}
+.dev-field label{font-size:9px;font-weight:bold;color:#9a3412;text-transform:uppercase;display:block;margin-bottom:3px}
+.af-field input,.dev-field input{width:100%;font-size:12px;padding:7px 8px;border:1.5px solid #93c5fd;border-radius:7px;outline:none;background:#fff;min-height:36px;color:#111;-webkit-appearance:none;appearance:none}
+.dev-field input{border-color:#fdba74}
+.af-field input:focus{border-color:#2563eb}
+.dev-field input:focus{border-color:#ea580c}
+.af-save{background:#0f6e56;border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:bold;padding:9px;cursor:pointer;width:100%;min-height:44px;-webkit-appearance:none;touch-action:manipulation}
+.dev-save{background:#c2410c;border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:bold;padding:9px;cursor:pointer;width:100%;min-height:44px;-webkit-appearance:none;touch-action:manipulation}
+.hdr-btns{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.addbtn{background:linear-gradient(135deg,#1e3a8a,#2563eb);border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:bold;padding:6px 11px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:4px;white-space:nowrap;-webkit-appearance:none;touch-action:manipulation}
+.adddevbtn{background:linear-gradient(135deg,#c2410c,#ea580c);border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:bold;padding:6px 11px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:4px;white-space:nowrap;-webkit-appearance:none;touch-action:manipulation}
+.btn-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:12px}
+.run-btn{padding:14px;font-size:14px;font-weight:bold;border:none;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;background:linear-gradient(135deg,#0f6e56,#1d9e75);color:#fff;min-height:50px;-webkit-appearance:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.run-btn:disabled{opacity:0.5;cursor:not-allowed}
+.run-btn:active{filter:brightness(0.9)}
+.exp-btn{padding:14px 14px;font-size:12px;font-weight:bold;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;min-height:50px;white-space:nowrap;-webkit-appearance:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.exp-btn:disabled{opacity:0.4}
+.stmsg{padding:20px;text-align:center;color:#888;font-size:13px;border:2px dashed #e2e8f0;border-radius:12px;background:#fff}
+.best3{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+@media(min-width:560px){.best3{flex-direction:row}}
+.b3card{border-radius:13px;overflow:hidden;border:1px solid #ddd;flex:1;background:#fff}
+.b3h0{background:linear-gradient(135deg,#b45309,#d97706);padding:13px 14px}
+.b3h1{background:linear-gradient(135deg,#0f6e56,#1d9e75);padding:13px 14px}
+.b3h2{background:linear-gradient(135deg,#4c1d95,#7c3aed);padding:13px 14px}
+.b3rank{font-size:9px;font-weight:bold;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.b3oz{font-size:28px;font-weight:bold;color:#fff;line-height:1}
+.b3ozs{font-size:13px;font-weight:normal;color:rgba(255,255,255,0.7);margin-left:3px}
+.b3diff{font-size:11px;padding:2px 9px;border-radius:20px;background:rgba(255,255,255,0.2);color:#fff;display:inline-block;margin-top:5px}
+.b3meta{font-size:11px;color:rgba(255,255,255,0.65);margin-top:4px}
+.b3body{padding:10px 14px;background:#fff}
+.b3stope{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid #f1f5f9;gap:4px}
+.b3stope:last-child{border-bottom:none}
+.b3sn{font-size:11px;font-weight:bold;color:#111;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:50%}
+.b3type{font-size:9px;padding:1px 5px;border-radius:10px;font-weight:bold;margin-left:3px}
+.b3type.dev{background:#fed7aa;color:#9a3412}
+.b3type.ore{background:#d1fae5;color:#065f46}
+.b3tr{font-size:11px;font-weight:bold;color:#2563eb;white-space:nowrap}
+.b3o{font-size:11px;color:#888;white-space:nowrap}
+.bbar{background:#e2e8f0;border-radius:4px;height:5px;margin-top:4px;overflow:hidden}
+.bfill{height:100%;border-radius:4px}
+.optcard{border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;background:#fff;margin-bottom:8px}
+.opth{padding:9px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.oc0{background:linear-gradient(90deg,#1a3a5c,#1e3a8a)}
+.oc1{background:linear-gradient(90deg,#0f6e56,#1d9e75)}
+.oc2{background:linear-gradient(90deg,#4c1d95,#7c3aed)}
+.oc3{background:linear-gradient(90deg,#b45309,#d97706)}
+.oc4{background:linear-gradient(90deg,#be185d,#ec4899)}
+.oc5{background:linear-gradient(90deg,#0369a1,#0ea5e9)}
+.oc6{background:linear-gradient(90deg,#065f46,#10b981)}
+.oc7{background:linear-gradient(90deg,#9a3412,#ea580c)}
+.onum{font-size:10px;font-weight:bold;background:rgba(255,255,255,0.22);color:#fff;padding:2px 9px;border-radius:20px}
+.ostats{display:flex;gap:10px;flex:1;flex-wrap:wrap}
+.ost{font-size:11px;color:rgba(255,255,255,0.75)}
+.ost strong{color:#fff}
+.odiff-ok{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:bold;background:rgba(255,255,255,0.2);color:#fff}
+.odiff-hi{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:bold;background:rgba(251,191,36,0.35);color:#fef08a}
+.otbl{width:100%;border-collapse:collapse;font-size:11px;min-width:380px}
+.otbl th{padding:6px 9px;text-align:left;color:#64748b;font-weight:bold;font-size:9px;text-transform:uppercase;border-bottom:1px solid #f1f5f9;background:#f8fafc;white-space:nowrap}
+.otbl td{padding:6px 9px;color:#111;border-bottom:1px solid #f1f5f9;white-space:nowrap}
+.otbl .tot td{font-weight:bold;background:#f8fafc}
+.otbl tr:last-child td{border-bottom:none}
+.obar{height:3px;border-radius:2px;display:inline-block;vertical-align:middle;margin-left:4px}
+.rw{color:#d97706;font-weight:bold}
+.rc{color:#dc2626;font-weight:bold}
+.divd{border:none;border-top:1px solid #e2e8f0;margin:10px 0}
+.stitle{font-size:13px;font-weight:bold;color:#111;margin-bottom:8px}
+.type-badge{display:inline-block;font-size:9px;padding:1px 6px;border-radius:10px;font-weight:bold;margin-left:4px;vertical-align:middle}
+.type-ore{background:#d1fae5;color:#065f46}
+.type-dev{background:#fed7aa;color:#9a3412}
+.about-card{background:#fff;border-radius:13px;padding:16px;margin-bottom:12px}
+.about-card h3{font-size:13px;font-weight:bold;color:#1e3a8a;margin-bottom:8px}
+.about-card p{font-size:12px;color:#555;line-height:1.7;margin-bottom:6px}
+.about-card ul{font-size:12px;color:#555;line-height:1.9;padding-left:18px}
+.formula-box{background:#1e3a8a;border-radius:8px;padding:10px 14px;margin-top:8px}
+.formula-box code{color:#93c5fd;font-size:13px;font-weight:bold;font-family:monospace}
+.section-divider{height:8px}
+
+select{-webkit-appearance:none;appearance:none;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:6px;padding:3px 4px;font-size:11px;color:#111;cursor:pointer}
+input[type=number]{-webkit-appearance:none;appearance:none}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+
+.card-hdr{display:-webkit-flex;display:flex}
+.hdr-btns{display:-webkit-flex;display:flex}
+.action-btns{display:-webkit-flex;display:flex}
+.btn-row{display:-webkit-grid;display:grid}
+.pgrid{display:-webkit-grid;display:grid}
+.b3stope{display:-webkit-flex;display:flex}
+.tolrow{display:-webkit-flex;display:flex}
+.best3{display:-webkit-flex;display:flex}
+.tabs{display:-webkit-grid;display:grid}
+
+select.cin{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:20px;width:80px}
+
+html{scroll-behavior:smooth;-webkit-scroll-behavior:smooth}
+.stable-wrap{overflow-x:scroll;-webkit-overflow-scrolling:touch;scroll-snap-type:none}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-logo">OZ</div>
+  <div style="flex:1">
+    <h1>Ounces Optimizer</h1>
+    <p>UMA - Obuasi Mine</p>
+  </div>
+  <span class="nav-badge">v2.4</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" id="tab1" onclick="showTab('optimizer')">Optimizer</button>
+  <button class="tab" id="tab2" onclick="showTab('about')">How It Works</button>
+</div>
+
+<div class="page active" id="page-optimizer">
+  <div style="height:10px"></div>
+
+  <!-- Targets -->
+  <div class="pgrid">
+    <div class="pcard pc-gold">
+      <label>Ounces Target</label>
+      <input type="number" id="ozT" value="921" min="1" inputmode="numeric">
+      <div class="hint">oz to achieve</div>
+    </div>
+    <div class="pcard pc-teal">
+      <label>Plan Tonnes</label>
+      <input type="number" id="dp" value="3478" min="51" inputmode="numeric">
+      <div class="hint"><span id="trkCnt">68</span> trucks available</div>
+    </div>
+    <div class="pcard pc-navy pfull">
+      <label>Ounces Factor</label>
+      <input type="number" id="ozF" value="0.03215" min="0.001" step="0.0001" inputmode="decimal">
+      <div class="hint">g/t conversion multiplier</div>
+    </div>
+  </div>
+
+  <div class="tolrow">
+    <label>Tolerance</label>
+    <input type="range" id="tol" min="1" max="5" value="2" step="1">
+    <span class="tv" id="tolOut">+/-2%</span>
+  </div>
+
+  <!-- Stope manager -->
+  <div class="card">
+    <div class="card-hdr navy">
+      <span>Stope Manager</span>
+      <div class="hdr-btns">
+        <button class="addbtn" id="addTogBtn">+ Add Stope</button>
+        <button class="adddevbtn" id="addDevTogBtn">+ Add Development</button>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <!-- Add stope form -->
+      <div class="addform" id="addForm">
+        <div style="font-size:11px;font-weight:bold;color:#1e40af;margin-bottom:8px">New Stope</div>
+        <div class="af-row">
+          <div class="af-field"><label>Stope Name</label><input id="nN" placeholder="e.g. 3400_280_RDN" type="text"></div>
+          <div class="af-field"><label>Stock (t)</label><input id="nS" type="number" min="0" placeholder="1200" inputmode="numeric"></div>
+          <div class="af-field"><label>Grade (g/t)</label><input id="nG" type="number" min="0" step="0.01" placeholder="8.5" inputmode="decimal"></div>
+        </div>
+        <button class="af-save" id="afSaveBtn">Add Stope</button>
+      </div>
+
+      <!-- Add development form -->
+      <div class="devform" id="devForm">
+        <div style="font-size:11px;font-weight:bold;color:#9a3412;margin-bottom:8px">New Development Heading</div>
+        <div class="dev-row">
+          <div class="dev-field"><label>Heading Name <span style="font-weight:normal;font-size:8px;color:#9a3412">(optional)</span></label><input id="dN" placeholder="Default: Dev Ore" type="text"></div>
+          <div class="dev-field"><label>No. of Cuts</label><input id="dC" type="number" min="1" value="1" inputmode="numeric"></div>
+          <div class="dev-field"><label>Stock (t) <span style="font-weight:normal;font-size:8px">auto</span></label><input id="dS" type="number" min="0" value="350" inputmode="numeric"></div>
+          <div class="dev-field"><label>Grade (g/t)</label><input id="dG" type="number" min="0" step="0.01" value="5.7" inputmode="decimal"></div>
+        </div>
+        <div style="font-size:10px;color:#9a3412;margin-bottom:8px">1 cut = 350 t &nbsp;|&nbsp; Stock auto-calculates from cuts (editable)</div>
+        <button class="dev-save" id="devSaveBtn">Add Development Heading</button>
+      </div>
+
+      <!-- Stope table -->
+      <div style="font-size:11px;font-weight:bold;color:#1e3a8a;margin-bottom:6px;margin-top:4px">Ore Stopes</div>
+      <div class="stable-wrap">
+        <table class="stable" id="stopeTable">
+          <thead><tr>
+            <th>Stope</th><th>Stock (t)</th><th>Grade</th><th>Mode</th><th title="Max trucks = how many full truckloads (51t each) the available broken stock can fill">Max Trucks</th><th title="Truck Cap = your manual limit on trucks from this stope. Defaults to Max Trucks but you can lower it to reserve stock or spread haul">Truck Cap</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="stbody"></tbody>
+        </table>
+      </div>
+      <div style="font-size:10px;color:#555;background:#f8fafc;border-radius:8px;padding:8px 12px;margin-top:6px;line-height:1.7;border:1px solid #e2e8f0">
+        <strong style="color:#1e3a8a">Max Trucks</strong> = how many full truck loads (51t each) the broken stock can fill. Calculated from stock automatically.<br>
+        <strong style="color:#b45309">Truck Cap</strong> = your limit on trucks from this source. Defaults to Max Trucks. Lower it to reserve stock for later shifts or spread haul across more headings.
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- Development table -->
+      <div style="font-size:11px;font-weight:bold;color:#c2410c;margin-bottom:6px;margin-top:12px">Development Headings</div>
+      <div class="stable-wrap">
+        <table class="stable dev-table" id="devTable">
+          <thead><tr>
+            <th>Heading</th><th>Cuts</th><th>Stock (t)</th><th>Grade</th><th title="Max trucks = how many full truckloads (51t each) the available broken stock can fill">Max Trucks</th><th title="Truck Cap = your manual limit on trucks from this heading. Defaults to Max Trucks but you can lower it">Truck Cap</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="devbody"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Run -->
+  <div class="btn-row">
+    <button class="run-btn" id="runBtn">&#9654; Find Best 3</button>
+    <button class="exp-btn" id="expBtn" disabled>&#8595; Export CSV</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results">
+    <div class="stmsg">Set your targets above and tap Find Best 3</div>
+  </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div style="height:10px"></div>
+  <div class="about-card">
+    <h3>What does this app do?</h3>
+    <p>The Ounces Optimizer helps you decide which stopes and development headings to haul ore from - and how many trucks to assign to each - to hit your daily ounces target.</p>
+  </div>
+  <div class="about-card">
+    <h3>How ounces are calculated</h3>
+    <div class="formula-box"><code>Ounces = Tonnes x Grade x Ounces Factor</code></div>
+    <p style="margin-top:8px">Where:</p>
+    <ul>
+      <li>Tonnes = Trucks x Truck Factor (51 t/truck)</li>
+      <li>Grade = g/t of the stope or development heading</li>
+      <li>Ounces Factor = 0.03215</li>
+      <li>Development: 1 cut = 350 t | Default grade = 5.7 g/t</li>
+    </ul>
+  </div>
+  <div class="about-card">
+    <h3>How to use</h3>
+    <ul>
+      <li>Set <b>Ounces Target</b>, <b>Plan Tonnes</b>, <b>Ounces Factor</b></li>
+      <li>Add ore stopes with Stock and Grade</li>
+      <li>Add development headings by entering number of cuts (1 cut = 350t)</li>
+      <li>Edit any stope or heading inline using the pencil button</li>
+      <li>Toggle ON/OFF and set Cap to limit trucks per source</li>
+      <li>Tap <b>Find Best 3</b></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+var TF = 51;
+var DEV_T_PER_CUT = 350;
+var DEV_DEFAULT_GRADE = 5.7;
+
+var ST = [
+  {n:"2901_296",         s:1351,  g:6.76,  mode:"Manual"},
+  {n:"3400_301_RDN",     s:0,     g:7.60,  mode:"Manual"},
+  {n:"3400_260_CLOSURE", s:0,     g:null,  mode:"Manual"},
+  {n:"3400_236_RDS_P1",  s:0,     g:null,  mode:"Manual"},
+  {n:"3500_236_RDN",     s:220.4, g:3.97,  mode:"Manual"},
+  {n:"3602_265_RDN",     s:0,     g:null,  mode:"Manual"},
+  {n:"3602_241_CLOSURE", s:2257,  g:7.86,  mode:"Manual"},
+  {n:"3400_245_RDN",     s:940,   g:7.52,  mode:"Manual"},
+  {n:"3600_324_RDS_P1",  s:374,   g:10.34, mode:"Manual"},
+  {n:"2700_345_RDN",     s:246.4, g:13.67, mode:"Manual"}
+];
+
+var DV = []; // development headings: {n, cuts, s, g}
+
+var tog = {};
+var devtog = {};
+var caps = {};
+var devcaps = {};
+var sols = [];
+var act = [];
+var addOpen = false;
+var devOpen = false;
+var editingStope = -1;   // index of stope being edited (-1 = none)
+var editingDev = -1;     // index of dev being edited
+
+for (var ii = 0; ii < ST.length; ii++) {
+  if (ST[ii].s > 0 && ST[ii].g) { tog[ST[ii].n] = true; }
+}
+
+function has(x)  { return x.s > 0 && x.g; }
+function smx(x)  { return Math.floor(x.s / TF); }
+function gc(g)   { return !g ? "gno" : g >= 10 ? "ghi" : g >= 7 ? "gmid" : "glo"; }
+function gpill(g){ return '<span class="' + gc(g) + '">' + (g ? g + " g/t" : "--") + "</span>"; }
+
+var BF = ["#b45309","#0f6e56","#4c1d95"];
+var BC = ["#b45309","#0f6e56","#4c1d95","#1e3a8a","#be185d","#0369a1","#065f46","#9a3412"];
+
+function showTab(name) {
+  document.getElementById("page-optimizer").className = "page" + (name==="optimizer" ? " active" : "");
+  document.getElementById("page-about").className    = "page" + (name==="about" ? " active" : "");
+  document.getElementById("tab1").className = "tab" + (name==="optimizer" ? " active" : "");
+  document.getElementById("tab2").className = "tab" + (name==="about" ? " active" : "");
+}
+
+//  Add stope form 
+function toggleAdd() {
+  addOpen = !addOpen;
+  if (addOpen) { devOpen = false; document.getElementById("devForm").className = "devform"; }
+  document.getElementById("addForm").className = "addform" + (addOpen ? " open" : "");
+}
+
+function doAdd() {
+  var nm = document.getElementById("nN").value.trim();
+  var st = parseFloat(document.getElementById("nS").value) || 0;
+  var gr = parseFloat(document.getElementById("nG").value) || null;
+  if (!nm) { alert("Enter a stope name."); return; }
+  for (var i = 0; i < ST.length; i++) { if (ST[i].n === nm) { alert("Already exists."); return; } }
+  ST.push({n: nm, s: st, g: gr, mode: "Manual"});
+  if (st > 0 && gr) { tog[nm] = true; }
+  document.getElementById("nN").value = "";
+  document.getElementById("nS").value = "";
+  document.getElementById("nG").value = "";
+  addOpen = false;
+  document.getElementById("addForm").className = "addform";
+  drawStopes();
+}
+
+//  Add development form 
+function toggleDev() {
+  devOpen = !devOpen;
+  if (devOpen) { addOpen = false; document.getElementById("addForm").className = "addform"; }
+  document.getElementById("devForm").className = "devform" + (devOpen ? " open" : "");
+}
+
+// Auto-calculate stock from cuts
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("dC").addEventListener("input", function() {
+    var cuts = parseInt(this.value) || 0;
+    document.getElementById("dS").value = cuts * DEV_T_PER_CUT;
+  });
+});
+
+function doAddDev() {
+  var nm = document.getElementById("dN").value.trim();
+  var cuts = parseInt(document.getElementById("dC").value) || 0;
+  var st = parseFloat(document.getElementById("dS").value) || (cuts * DEV_T_PER_CUT);
+  var gr = parseFloat(document.getElementById("dG").value) || DEV_DEFAULT_GRADE;
+  if (!nm) {
+    var base = "Dev Ore"; var candidate = base; var count = 1;
+    var taken = {}; for (var i = 0; i < DV.length; i++) { taken[DV[i].n] = true; }
+    while (taken[candidate]) { count++; candidate = base + " " + count; }
+    nm = candidate;
+  } else {
+    for (var i = 0; i < DV.length; i++) { if (DV[i].n === nm) { alert("Already exists."); return; } }
+  }
+  if (cuts <= 0 && st <= 0) { alert("Enter number of cuts or stock."); return; }
+  DV.push({n: nm, cuts: cuts, s: st, g: gr});
+  devtog[nm] = true;
+  document.getElementById("dN").value = "";
+  document.getElementById("dC").value = "";
+  document.getElementById("dS").value = "";
+  document.getElementById("dG").value = DEV_DEFAULT_GRADE;
+  devOpen = false;
+  document.getElementById("devForm").className = "devform";
+  drawDev();
+}
+
+//  Draw stope table 
+function drawStopes() {
+  var tb = document.getElementById("stbody");
+  tb.innerHTML = "";
+  for (var i = 0; i < ST.length; i++) {
+    var x = ST[i];
+    var ok = has(x);
+    var on = ok && tog[x.n];
+    var m = ok ? smx(x) : 0;
+    var cap = caps[x.n] !== undefined ? caps[x.n] : m;
+    var rc = ok ? (on ? "active-row" : "inactive-row") : "nostock-row";
+    var tc = ok ? (on ? "ton" : "toff") : "tnone";
+    var tl = ok ? (on ? "ON" : "OFF") : "--";
+    var isEditing = (editingStope === i);
+
+    var tr = document.createElement("tr");
+    tr.className = rc;
+
+    // Name
+    var td1 = document.createElement("td");
+    td1.style.fontWeight = "bold"; td1.style.fontSize = "11px";
+    td1.textContent = x.n; td1.title = x.n;
+
+    // Mode (Remote / Manual)
+    var tdMode = document.createElement("td");
+    if (isEditing) {
+      var modeEl = document.createElement("select");
+      modeEl.className = "cin editable"; modeEl.style.width = "80px";
+      modeEl.setAttribute("data-edit-mode", String(i));
+      var optR = document.createElement("option"); optR.value = "Remote"; optR.textContent = "Remote";
+      var optM = document.createElement("option"); optM.value = "Manual"; optM.textContent = "Manual";
+      if ((x.mode || "Manual") === "Remote") { optR.selected = true; } else { optM.selected = true; }
+      modeEl.appendChild(optR); modeEl.appendChild(optM);
+      tdMode.appendChild(modeEl);
+    } else {
+      var modeLbl = x.mode || "Manual";
+      var modeBadge = document.createElement("span");
+      modeBadge.style.display = "inline-block";
+      modeBadge.style.padding = "2px 7px";
+      modeBadge.style.borderRadius = "20px";
+      modeBadge.style.fontSize = "10px";
+      modeBadge.style.fontWeight = "bold";
+      if (modeLbl === "Remote") {
+        modeBadge.style.background = "#dbeafe"; modeBadge.style.color = "#1e3a8a";
+      } else {
+        modeBadge.style.background = "#f3f4f6"; modeBadge.style.color = "#374151";
+      }
+      modeBadge.textContent = modeLbl;
+      tdMode.appendChild(modeBadge);
+    }
+
+    // Stock
+    var td2 = document.createElement("td");
+    if (isEditing) {
+      var inS = document.createElement("input");
+      inS.className = "cin editable"; inS.type = "number"; inS.min = "0";
+      inS.value = x.s || ""; inS.style.width = "70px";
+      inS.setAttribute("data-edit-s", String(i));
+      td2.appendChild(inS);
+    } else {
+      td2.style.fontSize = "11px";
+      td2.textContent = x.s > 0 ? Math.round(x.s).toLocaleString() : "--";
+    }
+
+    // Grade
+    var td3 = document.createElement("td");
+    if (isEditing) {
+      var inG = document.createElement("input");
+      inG.className = "cin editable"; inG.type = "number"; inG.min = "0"; inG.step = "0.01";
+      inG.value = x.g || ""; inG.style.width = "60px";
+      inG.setAttribute("data-edit-g", String(i));
+      td3.appendChild(inG);
+    } else {
+      td3.innerHTML = gpill(x.g);
+    }
+
+    // Max trucks
+    var td4 = document.createElement("td"); td4.style.fontSize = "11px";
+    td4.textContent = ok ? m : "--";
+
+    // Cap
+    var td5 = document.createElement("td");
+    var cinEl = document.createElement("input");
+    cinEl.className = "cin"; cinEl.type = "number"; cinEl.min = "0";
+    cinEl.max = String(m); cinEl.value = String(cap);
+    cinEl.setAttribute("inputmode","numeric");
+    cinEl.setAttribute("data-idx", String(i));
+    if (!ok || !on) { cinEl.disabled = true; }
+    td5.appendChild(cinEl);
+
+    // Toggle
+    var td6 = document.createElement("td");
+    var togEl = document.createElement("button");
+    togEl.className = "tbtn " + tc; togEl.textContent = tl;
+    togEl.setAttribute("data-tg", String(i));
+    td6.appendChild(togEl);
+
+    // Actions
+    var td7 = document.createElement("td");
+    var abts = document.createElement("div"); abts.className = "action-btns";
+    if (isEditing) {
+      var saveEl = document.createElement("button");
+      saveEl.className = "savebtn-inline"; saveEl.textContent = "v";
+      saveEl.setAttribute("data-save-stope", String(i));
+      var cancelEl = document.createElement("button");
+      cancelEl.className = "editbtn"; cancelEl.textContent = "";
+      cancelEl.setAttribute("data-cancel-stope", "1");
+      abts.appendChild(saveEl); abts.appendChild(cancelEl);
+    } else {
+      var editEl = document.createElement("button");
+      editEl.className = "editbtn"; editEl.textContent = "edit";
+      editEl.setAttribute("data-edit-stope", String(i));
+      var delEl = document.createElement("button");
+      delEl.className = "delbtn"; delEl.textContent = "x";
+      delEl.setAttribute("data-rm", String(i));
+      abts.appendChild(editEl); abts.appendChild(delEl);
+    }
+    td7.appendChild(abts);
+
+    tr.appendChild(td1); tr.appendChild(tdMode); tr.appendChild(td2); tr.appendChild(td3);
+    tr.appendChild(td4); tr.appendChild(td5); tr.appendChild(td6); tr.appendChild(td7);
+    tb.appendChild(tr);
+  }
+}
+
+//  Draw development table 
+function drawDev() {
+  var tb = document.getElementById("devbody");
+  tb.innerHTML = "";
+  if (DV.length === 0) {
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    td.colSpan = 8; td.style.textAlign = "center"; td.style.color = "#aaa"; td.style.padding = "12px";
+    td.textContent = "No development headings added yet. Tap + Add Development above.";
+    tr.appendChild(td); tb.appendChild(tr);
+    return;
+  }
+  for (var i = 0; i < DV.length; i++) {
+    var x = DV[i];
+    var ok = x.s > 0 && x.g;
+    var on = ok && devtog[x.n];
+    var m = ok ? smx(x) : 0;
+    var cap = devcaps[x.n] !== undefined ? devcaps[x.n] : m;
+    var rc = ok ? (on ? "dev-active" : "inactive-row") : "nostock-row";
+    var tc = ok ? (on ? "ton" : "toff") : "tnone";
+    var tl = ok ? (on ? "ON" : "OFF") : "--";
+    var isEditing = (editingDev === i);
+
+    var tr = document.createElement("tr"); tr.className = rc;
+
+    // Name
+    var td1 = document.createElement("td");
+    td1.style.fontWeight = "bold"; td1.style.fontSize = "11px";
+    td1.textContent = x.n;
+
+    // Cuts
+    var td2 = document.createElement("td");
+    if (isEditing) {
+      var inC = document.createElement("input");
+      inC.className = "cin editable"; inC.type = "number"; inC.min = "1";
+      inC.value = x.cuts || ""; inC.style.width = "50px";
+      inC.setAttribute("data-dedit-c", String(i));
+      inC.addEventListener("input", function(e) {
+        var idx2 = e.target.getAttribute("data-dedit-c");
+        var sEl = document.querySelector("[data-dedit-s='" + idx2 + "']");
+        if (sEl) { sEl.value = (parseInt(e.target.value)||0) * DEV_T_PER_CUT; }
+      });
+      td2.appendChild(inC);
+    } else {
+      td2.style.fontSize = "11px"; td2.textContent = x.cuts || "--";
+    }
+
+    // Stock
+    var td3 = document.createElement("td");
+    if (isEditing) {
+      var inS2 = document.createElement("input");
+      inS2.className = "cin editable"; inS2.type = "number"; inS2.min = "0";
+      inS2.value = x.s || ""; inS2.style.width = "65px";
+      inS2.setAttribute("data-dedit-s", String(i));
+      td3.appendChild(inS2);
+    } else {
+      td3.style.fontSize = "11px"; td3.textContent = x.s > 0 ? Math.round(x.s).toLocaleString() : "--";
+    }
+
+    // Grade
+    var td4 = document.createElement("td");
+    if (isEditing) {
+      var inG2 = document.createElement("input");
+      inG2.className = "cin editable"; inG2.type = "number"; inG2.min = "0"; inG2.step = "0.01";
+      inG2.value = x.g || DEV_DEFAULT_GRADE; inG2.style.width = "55px";
+      inG2.setAttribute("data-dedit-g", String(i));
+      td4.appendChild(inG2);
+    } else {
+      td4.innerHTML = gpill(x.g);
+    }
+
+    // Max trucks
+    var td5 = document.createElement("td"); td5.style.fontSize = "11px";
+    td5.textContent = ok ? m : "--";
+
+    // Cap
+    var td6 = document.createElement("td");
+    var cinEl2 = document.createElement("input");
+    cinEl2.className = "cin"; cinEl2.type = "number"; cinEl2.min = "0";
+    cinEl2.max = String(m); cinEl2.value = String(cap);
+    cinEl2.setAttribute("inputmode","numeric");
+    cinEl2.setAttribute("data-didx", String(i));
+    if (!ok || !on) { cinEl2.disabled = true; }
+    td6.appendChild(cinEl2);
+
+    // Toggle
+    var td7 = document.createElement("td");
+    var togEl2 = document.createElement("button");
+    togEl2.className = "tbtn " + tc; togEl2.textContent = tl;
+    togEl2.setAttribute("data-dtg", String(i));
+    td7.appendChild(togEl2);
+
+    // Actions
+    var td8 = document.createElement("td");
+    var abts2 = document.createElement("div"); abts2.className = "action-btns";
+    if (isEditing) {
+      var saveEl2 = document.createElement("button");
+      saveEl2.className = "savebtn-inline"; saveEl2.textContent = "v";
+      saveEl2.setAttribute("data-save-dev", String(i));
+      var cancelEl2 = document.createElement("button");
+      cancelEl2.className = "editbtn"; cancelEl2.textContent = "";
+      cancelEl2.setAttribute("data-cancel-dev","1");
+      abts2.appendChild(saveEl2); abts2.appendChild(cancelEl2);
+    } else {
+      var editEl2 = document.createElement("button");
+      editEl2.className = "editbtn"; editEl2.textContent = "edit";
+      editEl2.setAttribute("data-edit-dev", String(i));
+      var delEl2 = document.createElement("button");
+      delEl2.className = "delbtn"; delEl2.textContent = "x";
+      delEl2.setAttribute("data-drm", String(i));
+      abts2.appendChild(editEl2); abts2.appendChild(delEl2);
+    }
+    td8.appendChild(abts2);
+
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
+    tr.appendChild(td5); tr.appendChild(td6); tr.appendChild(td7); tr.appendChild(td8);
+    tb.appendChild(tr);
+  }
+}
+
+//  Stope table events 
+document.getElementById("stbody").addEventListener("click", function(e) {
+  var tg    = e.target.getAttribute("data-tg");
+  var rm    = e.target.getAttribute("data-rm");
+  var edit  = e.target.getAttribute("data-edit-stope");
+  var save  = e.target.getAttribute("data-save-stope");
+  var cancel= e.target.getAttribute("data-cancel-stope");
+
+  if (tg !== null) {
+    var idx = parseInt(tg); var n = ST[idx].n;
+    if (tog[n]) { delete tog[n]; } else if (has(ST[idx])) { tog[n] = true; }
+    drawStopes();
+  }
+  if (rm !== null) {
+    var idx = parseInt(rm); var n = ST[idx].n;
+    ST.splice(idx,1); delete tog[n]; delete caps[n];
+    if (editingStope === idx) { editingStope = -1; }
+    drawStopes();
+  }
+  if (edit !== null) { editingStope = parseInt(edit); drawStopes(); }
+  if (cancel !== null) { editingStope = -1; drawStopes(); }
+  if (save !== null) {
+    var idx = parseInt(save);
+    var newS = parseFloat(document.querySelector("[data-edit-s='" + idx + "']").value) || 0;
+    var newG = parseFloat(document.querySelector("[data-edit-g='" + idx + "']").value) || null;
+    var modeEl2 = document.querySelector("[data-edit-mode='" + idx + "']");
+    var newMode = modeEl2 ? modeEl2.value : (ST[idx].mode || "Manual");
+    ST[idx].s = newS; ST[idx].g = newG; ST[idx].mode = newMode;
+    if (newS > 0 && newG) { tog[ST[idx].n] = true; } else { delete tog[ST[idx].n]; }
+    delete caps[ST[idx].n];
+    editingStope = -1; drawStopes();
+  }
+});
+
+document.getElementById("stbody").addEventListener("change", function(e) {
+  var idx = e.target.getAttribute("data-idx");
+  if (idx !== null) {
+    var i = parseInt(idx); var x = ST[i]; var m = smx(x);
+    caps[x.n] = Math.max(0, Math.min(m, parseInt(e.target.value)||0));
+  }
+});
+
+//  Dev table events 
+document.getElementById("devbody").addEventListener("click", function(e) {
+  var tg    = e.target.getAttribute("data-dtg");
+  var rm    = e.target.getAttribute("data-drm");
+  var edit  = e.target.getAttribute("data-edit-dev");
+  var save  = e.target.getAttribute("data-save-dev");
+  var cancel= e.target.getAttribute("data-cancel-dev");
+
+  if (tg !== null) {
+    var idx = parseInt(tg); var n = DV[idx].n;
+    if (devtog[n]) { delete devtog[n]; } else { devtog[n] = true; }
+    drawDev();
+  }
+  if (rm !== null) {
+    var idx = parseInt(rm); var n = DV[idx].n;
+    DV.splice(idx,1); delete devtog[n]; delete devcaps[n];
+    if (editingDev === idx) { editingDev = -1; }
+    drawDev();
+  }
+  if (edit !== null) { editingDev = parseInt(edit); drawDev(); }
+  if (cancel !== null) { editingDev = -1; drawDev(); }
+  if (save !== null) {
+    var idx = parseInt(save);
+    var newC = parseInt(document.querySelector("[data-dedit-c='" + idx + "']").value) || 0;
+    var newS = parseFloat(document.querySelector("[data-dedit-s='" + idx + "']").value) || 0;
+    var newG = parseFloat(document.querySelector("[data-dedit-g='" + idx + "']").value) || DEV_DEFAULT_GRADE;
+    DV[idx].cuts = newC; DV[idx].s = newS; DV[idx].g = newG;
+    if (newS > 0 && newG) { devtog[DV[idx].n] = true; }
+    delete devcaps[DV[idx].n];
+    editingDev = -1; drawDev();
+  }
+});
+
+document.getElementById("devbody").addEventListener("change", function(e) {
+  var idx = e.target.getAttribute("data-didx");
+  if (idx !== null) {
+    var i = parseInt(idx); var x = DV[i]; var m = smx(x);
+    devcaps[x.n] = Math.max(0, Math.min(m, parseInt(e.target.value)||0));
+  }
+});
+
+//  Other listeners 
+document.getElementById("dp").addEventListener("input", function() {
+  document.getElementById("trkCnt").textContent = Math.floor(+this.value / TF);
+});
+document.getElementById("tol").addEventListener("input", function() {
+  document.getElementById("tolOut").textContent = "+/-" + this.value + "%";
+});
+document.getElementById("addTogBtn").addEventListener("click", toggleAdd);
+document.getElementById("addDevTogBtn").addEventListener("click", toggleDev);
+document.getElementById("afSaveBtn").addEventListener("click", doAdd);
+document.getElementById("devSaveBtn").addEventListener("click", doAddDev);
+document.getElementById("runBtn").addEventListener("click", run);
+document.getElementById("expBtn").addEventListener("click", doExport);
+
+// auto-calc cuts -> stock in add form
+document.getElementById("dC").addEventListener("input", function() {
+  var cuts = parseInt(this.value) || 0;
+  document.getElementById("dS").value = cuts > 0 ? cuts * DEV_T_PER_CUT : "";
+});
+
+drawStopes();
+drawDev();
+
+//  Optimizer 
+function findCombos(ranges, lo, hi, dailyT, actList, ozFv) {
+  var results = [];
+  var n = ranges.length;
+  var idx = [];
+  for (var i = 0; i < n; i++) { idx.push(0); }
+  while (true) {
+    var tot = 0;
+    for (var i = 0; i < n; i++) { tot += ranges[i][idx[i]]; }
+    if (tot > 0) {
+      var totT = tot * TF;
+      if (totT >= dailyT * 0.85 && totT <= dailyT * 1.15) {
+        var oz = 0;
+        for (var i = 0; i < n; i++) { oz += ranges[i][idx[i]] * TF * actList[i].g * ozFv; }
+        oz = Math.round(oz * 10) / 10;
+        if (oz >= lo && oz <= hi) {
+          results.push({cb: idx.slice(), tot: tot, totT: totT, oz: oz});
+          if (results.length >= 50) { return results; }
+        }
+      }
+    }
+    var pos = n - 1;
+    while (pos >= 0) {
+      idx[pos]++;
+      if (idx[pos] < ranges[pos].length) { break; }
+      idx[pos] = 0; pos--;
+    }
+    if (pos < 0) { break; }
+  }
+  return results;
+}
+
+function run() {
+  var ozT  = +document.getElementById("ozT").value;
+  var d    = +document.getElementById("dp").value;
+  var ozFv = +document.getElementById("ozF").value;
+  var tl   = +document.getElementById("tol").value / 100;
+  var tt   = Math.floor(d / TF);
+
+  // combine active stopes + active dev headings into one list
+  act = [];
+  for (var i = 0; i < ST.length; i++) {
+    if (tog[ST[i].n] && has(ST[i])) {
+      act.push({n: ST[i].n, s: ST[i].s, g: ST[i].g, mode: ST[i].mode || "Manual", type: "ore", capRef: caps});
+    }
+  }
+  for (var i = 0; i < DV.length; i++) {
+    if (devtog[DV[i].n] && DV[i].s > 0 && DV[i].g) {
+      act.push({n: DV[i].n, s: DV[i].s, g: DV[i].g, mode: "--", type: "dev", capRef: devcaps});
+    }
+  }
+
+  if (!act.length) {
+    document.getElementById("results").innerHTML = '<div class="stmsg">No active stopes or headings. Tap ON to activate.</div>';
+    return;
+  }
+
+  var btn = document.getElementById("runBtn");
+  btn.disabled = true; btn.textContent = "Searching...";
+
+  setTimeout(function() {
+    var lo = ozT * (1 - tl), hi = ozT * (1 + tl);
+    var ranges = [];
+    for (var i = 0; i < act.length; i++) {
+      var x = act[i];
+      var capStore = x.type === "ore" ? caps : devcaps;
+      var capV = capStore[x.n] !== undefined ? Math.min(capStore[x.n], tt) : Math.min(smx(x), tt);
+      var r = [];
+      for (var j = 0; j <= capV; j++) { r.push(j); }
+      ranges.push(r);
+    }
+
+    sols = findCombos(ranges, lo, hi, d, act, ozFv);
+    sols.sort(function(a, b) { return Math.abs(a.oz - ozT) - Math.abs(b.oz - ozT); });
+
+    btn.disabled = false; btn.innerHTML = "&#9654; Find Best 3";
+    document.getElementById("expBtn").disabled = !sols.length;
+
+    if (!sols.length) {
+      document.getElementById("results").innerHTML = '<div class="stmsg">No combinations found. Try wider tolerance or activate more stopes/headings.</div>';
+      return;
+    }
+
+    var top3 = sols.slice(0, 3);
+    var rl   = ["Best Match", "Runner Up", "Third Best"];
+    var res  = document.getElementById("results");
+    res.innerHTML = "";
+
+    var t = document.createElement("div"); t.className = "stitle";
+    t.textContent = "Top 3 Combinations"; res.appendChild(t);
+
+    var b3 = document.createElement("div"); b3.className = "best3";
+    for (var i = 0; i < top3.length; i++) {
+      var s = top3[i];
+      var df = Math.round((s.oz - ozT) * 10) / 10;
+      var ds = (df >= 0 ? "+" : "") + df;
+      var card = document.createElement("div"); card.className = "b3card";
+      var hdr = document.createElement("div"); hdr.className = "b3h" + i;
+      hdr.innerHTML = '<div class="b3rank">' + rl[i] + '</div>' +
+        '<div class="b3oz">' + s.oz + '<span class="b3ozs">oz</span></div>' +
+        '<span class="b3diff">' + ds + ' oz</span>' +
+        '<div class="b3meta">' + s.tot + ' trucks &bull; ' + s.totT.toLocaleString() + ' t</div>';
+      var body = document.createElement("div"); body.className = "b3body";
+      for (var j = 0; j < s.cb.length; j++) {
+        if (!s.cb[j]) { continue; }
+        var x = act[j]; var t2 = s.cb[j] * TF;
+        var oz2 = Math.round(t2 * x.g * ozFv * 10) / 10;
+        var pct = Math.round(oz2 / s.oz * 100);
+        var row = document.createElement("div"); row.className = "b3stope";
+        var typeBadge = '<span class="b3type ' + (x.type==="dev"?"dev":"ore") + '">' + (x.type==="dev"?"DEV":"ORE") + '</span>';
+        row.innerHTML = '<span class="b3sn">' + x.n + typeBadge + '</span>' +
+          '<span class="b3tr">' + s.cb[j] + ' tr</span>' +
+          '<span class="b3o">' + oz2 + ' oz</span>';
+        var bar = document.createElement("div"); bar.className = "bbar";
+        bar.innerHTML = '<div class="bfill" style="width:' + pct + '%;background:' + BF[i] + '"></div>';
+        body.appendChild(row); body.appendChild(bar);
+      }
+      card.appendChild(hdr); card.appendChild(body); b3.appendChild(card);
+    }
+    res.appendChild(b3);
+
+    if (sols.length > 3) {
+      var dv = document.createElement("div"); dv.className = "divd"; res.appendChild(dv);
+      var at = document.createElement("div"); at.className = "stitle";
+      at.textContent = "All " + sols.length + " Valid Options (sorted by accuracy)"; res.appendChild(at);
+
+      for (var i = 0; i < sols.length; i++) {
+        var s = sols[i];
+        var df = Math.round((s.oz - ozT) * 10) / 10;
+        var ds = (df >= 0 ? "+" : "") + df;
+        var dc = Math.abs(df) < ozT * 0.01 ? "odiff-ok" : "odiff-hi";
+        var bc = BC[i % BC.length];
+        var oc = document.createElement("div"); oc.className = "optcard";
+        var oh = document.createElement("div"); oh.className = "opth oc" + (i % 8);
+        oh.innerHTML = '<span class="onum">Option ' + (i+1) + '</span>' +
+          '<div class="ostats"><span class="ost"><strong>' + s.oz + ' oz</strong></span>' +
+          '<span class="ost"><strong>' + s.totT.toLocaleString() + ' t</strong></span>' +
+          '<span class="ost"><strong>' + s.tot + ' trucks</strong></span></div>' +
+          '<span class="' + dc + '">' + ds + ' oz</span>';
+        var sw2 = document.createElement("div");
+        sw2.style.overflowX = "auto"; sw2.style.WebkitOverflowScrolling = "touch";
+        var tbl = document.createElement("table"); tbl.className = "otbl";
+        tbl.innerHTML = '<thead><tr><th>Source</th><th>Type</th><th>Mode</th><th>Grade</th><th>Trucks</th><th>Tonnes</th><th>Oz</th><th>Stock Left</th></tr></thead>';
+        var tbody2 = document.createElement("tbody");
+        for (var j = 0; j < s.cb.length; j++) {
+          if (!s.cb[j]) { continue; }
+          var x = act[j]; var tn = s.cb[j] * TF;
+          var oz2 = Math.round(tn * x.g * ozFv * 10) / 10;
+          var pct = Math.round(oz2 / s.oz * 100);
+          var rem = Math.round((x.s - tn) * 10) / 10;
+          var rc2 = rem < 0 ? "rc" : rem < 100 ? "rw" : "";
+          var typeLbl = x.type === "dev" ?
+            '<span class="type-badge type-dev">DEV</span>' :
+            '<span class="type-badge type-ore">ORE</span>';
+          var modeLbl2 = (x.mode || "Manual") === "Remote" ?
+            '<span style="display:inline-block;padding:1px 6px;border-radius:10px;font-size:9px;font-weight:bold;background:#dbeafe;color:#1e3a8a">Remote</span>' :
+            '<span style="display:inline-block;padding:1px 6px;border-radius:10px;font-size:9px;font-weight:bold;background:#f3f4f6;color:#374151">Manual</span>';
+          var tr2 = document.createElement("tr");
+          tr2.innerHTML = '<td><strong>' + x.n + '</strong></td><td>' + typeLbl + '</td><td>' + modeLbl2 + '</td>' +
+            '<td>' + gpill(x.g) + '</td>' +
+            '<td>' + s.cb[j] + '</td><td>' + tn.toLocaleString() + '</td>' +
+            '<td>' + oz2 + 'oz<span class="obar" style="width:' + Math.round(pct*.5) + 'px;background:' + bc + '"></span></td>' +
+            '<td class="' + rc2 + '">' + rem + 't</td>';
+          tbody2.appendChild(tr2);
+        }
+        var tr3 = document.createElement("tr"); tr3.className = "tot";
+        tr3.innerHTML = '<td colspan="4">Total</td><td>' + s.tot + '</td><td>' + s.totT.toLocaleString() + '</td><td>' + s.oz + ' oz</td><td>--</td>';
+        tbody2.appendChild(tr3);
+        tbl.appendChild(tbody2); sw2.appendChild(tbl); oc.appendChild(oh); oc.appendChild(sw2);
+        res.appendChild(oc);
+      }
+    }
+  }, 30);
+}
+
+function doExport() {
+  if (!sols.length) { return; }
+  var ozT  = +document.getElementById("ozT").value;
+  var d    = +document.getElementById("dp").value;
+  var ozFv = +document.getElementById("ozF").value;
+  var lines = ["OUNCES OPTIMIZER RESULTS - UMA Obuasi"];
+  lines.push("Date," + new Date().toLocaleDateString());
+  lines.push("Ounces Target," + ozT + " oz");
+  lines.push("Plan Tonnes," + d + " t");
+  lines.push("Ounces Factor," + ozFv);
+  lines.push("");
+  var rl = ["BEST MATCH","RUNNER UP","THIRD BEST"];
+  var top3 = sols.slice(0, 3);
+  for (var i = 0; i < top3.length; i++) {
+    var s = top3[i];
+    var df = Math.round((s.oz - ozT) * 10) / 10;
+    lines.push(rl[i]);
+    lines.push("Total Oz," + s.oz + ",vs target," + (df>=0?"+":"") + df);
+    lines.push("Trucks," + s.tot + ",Tonnes," + s.totT);
+    lines.push("Source,Type,Grade,Trucks,Tonnes,Oz Contribution,Stock Left");
+    for (var j = 0; j < s.cb.length; j++) {
+      if (!s.cb[j]) { continue; }
+      var x = act[j]; var tn = s.cb[j] * TF;
+      var oz2 = Math.round(tn * x.g * ozFv * 10) / 10;
+      var rem = Math.round((x.s - tn) * 10) / 10;
+      lines.push(x.n + "," + x.type.toUpperCase() + "," + x.g + "," + s.cb[j] + "," + tn + "," + oz2 + "," + rem);
+    }
+    lines.push("");
+  }
+  var blob = new Blob([lines.join("\n")], {type:"text/csv"});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url; a.download = "ounces_results_" + new Date().toISOString().slice(0,10) + ".csv";
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
